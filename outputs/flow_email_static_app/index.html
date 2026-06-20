@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Cartsee Flow 邮件数据工作台</title>
+  <link rel="stylesheet" href="./styles.css?v=20260620-flow-6" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <h1>Cartsee Flow 邮件数据工作台</h1>
+      <p id="status">尚未载入数据。可先载入 2026 年 5 月示例数据，或上传 Cartsee Flow 导出的 Excel/JSON。</p>
+    </div>
+    <div class="header-actions">
+      <label class="file-button">
+        <input id="fileInput" type="file" accept=".xlsx,.xls,.json" />
+        上传数据
+      </label>
+      <button id="loadSample" type="button">载入示例</button>
+      <button id="clearData" type="button" class="ghost">清空本地数据</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="toolbar" aria-label="筛选">
+      <label>
+        月份
+        <select id="monthFilter"></select>
+      </label>
+      <label>
+        站点
+        <select id="siteFilter"></select>
+      </label>
+      <label>
+        Flow 类型
+        <select id="flowTypeFilter"></select>
+      </label>
+    </section>
+
+    <section id="kpiStrip" class="kpi-strip" aria-label="核心指标"></section>
+
+    <section class="surface">
+      <div class="section-head">
+        <div>
+          <h2>Flow 汇总</h2>
+          <p>点击一条 Flow 查看归属邮件表现。</p>
+        </div>
+      </div>
+      <div id="flowTable" class="table-wrap"></div>
+    </section>
+
+    <section id="emailPanel" class="surface" hidden>
+      <div class="section-head">
+        <div>
+          <h2 id="emailPanelTitle">邮件下钻</h2>
+          <p>点击邮件查看这封邮件的历史月份表现。</p>
+        </div>
+      </div>
+      <div id="emailTable" class="table-wrap"></div>
+    </section>
+
+    <section id="historyPanel" class="surface" hidden>
+      <div class="section-head">
+        <div>
+          <h2 id="historyPanelTitle">单封邮件历史数据</h2>
+          <p>点击月份查看该邮件在不同站点的表现。</p>
+        </div>
+      </div>
+      <div id="historyTable" class="table-wrap"></div>
+    </section>
+
+    <section id="sitePanel" class="surface" hidden>
+      <div class="section-head">
+        <div>
+          <h2 id="sitePanelTitle">国家 / 站点下钻</h2>
+          <p>用于判断波动来自整体策略，还是来自某个市场。</p>
+        </div>
+      </div>
+      <div id="siteTable" class="table-wrap"></div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="./app.js?v=20260620-flow-13"></script>
+</body>
+</html>
