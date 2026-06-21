@@ -167,6 +167,10 @@ button.ghost {
   font-weight: 680;
 }
 
+.toolbar label[hidden] {
+  display: none;
+}
+
 select {
   min-height: 34px;
   border: 1px solid var(--line-strong);
