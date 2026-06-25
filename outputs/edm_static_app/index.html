@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EDM Content Strategy Analysis</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>EDM Content Strategy Analysis</h1>
+      <p>上传 Excel 或 CSV，按内容类型、月份、Campaign、国家站点逐层分析。</p>
+    </div>
+    <div class="market-toggle">
+      <button class="active" data-market="all">All</button>
+      <button data-market="core">Core</button>
+      <button data-market="noncore">Non-core</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel upload">
+      <div>
+        <h2>数据入口</h2>
+        <p>支持 `.xlsx`、`.xls`、`.csv`。Excel 上传后可选择 Sheet；所有处理都在浏览器里完成。</p>
+      </div>
+      <div class="controls">
+        <input id="fileInput" type="file" accept=".xlsx,.xls,.csv" />
+        <select id="sheetSelect" hidden></select>
+        <button id="loadSample">载入示例数据</button>
+      </div>
+      <div id="status" class="status">请上传数据，或先载入示例数据查看交互效果。</div>
+    </section>
+
+    <section class="panel overview-panel">
+      <div class="section-head">
+        <div>
+          <h2>总览</h2>
+          <p>按月份、站点、邮件内容类型快速查看当前数据的整体表现。</p>
+        </div>
+      </div>
+      <div class="overview-filters">
+        <label>
+          <span>月份</span>
+          <select id="overviewMonth"></select>
+        </label>
+        <label>
+          <span>站点</span>
+          <select id="overviewSite"></select>
+        </label>
+        <label>
+          <span>邮件内容类型</span>
+          <select id="overviewType"></select>
+        </label>
+      </div>
+      <div id="overviewCards" class="overview-cards"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div>
+          <h2>EDM Content Strategy Analysis</h2>
+          <p>点击内容类型原地展开月份；点击月份展开 Campaign；点击 Campaign 展开国家站点表现。</p>
+        </div>
+      </div>
+      <div id="typeTable" class="table-wrap"></div>
+    </section>
+  </main>
+
+  <script src="./sample-data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
